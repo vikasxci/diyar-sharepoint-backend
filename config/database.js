@@ -1,11 +1,11 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
 const dbConnect = () => {
   mongoose
-    .connect(process.env.DATABASE_URL)
+    .connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Database is Connected Successfully"))
     .catch((err) => {
       console.error("Database is not Connected.", err.message);
@@ -13,4 +13,4 @@ const dbConnect = () => {
     });
 };
 
-export default dbConnect; // Use ES Module export
+module.exports = dbConnect; // Use CommonJS `module.exports`

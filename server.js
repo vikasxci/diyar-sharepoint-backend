@@ -1,9 +1,13 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import productRoutes from "./routes/allroutes.js";
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const dbConnect = require("./config/database"); // Import database connection
+const productRoutes = require("./routes/allroutes");
 
 dotenv.config();
+
+// Connect to Database
+dbConnect();
 
 const app = express();
 app.use(cors());
